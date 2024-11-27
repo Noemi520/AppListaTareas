@@ -4,10 +4,71 @@
                     x:Class="AppListaTareas.Resources.Styles.CollectionTask"
                     xmlns:ViewModel="clr-namespace:AppListaTareas.MVVM.ViewModel">
     <DataTemplate x:Key="TaskTemplate">
-        
+        <SwipeView>
+            <SwipeView.LeftItems>
+                <SwipeItems>
+                    <SwipeItem BackgroundColor="DarkBlue"
+                               IconImageSource="dotnet_bot.png"
+                               Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}},Path=DeleteCommand}"
+                               CommandParameter="{Binding .}"/>
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <Grid ColumnDefinitions="1*,2*,7*"
+                  RowDefinitions="*,*"
+                  Margin="15,10,15,0">
+                <Frame Grid.RowSpan="2"
+                       Grid.ColumnSpan="2"
+                       Grid.Column="1"
+                       BorderColor="White">
+                    <Frame.Background>
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Offset="0" Color="#F8F9FA"/>
+                            <GradientStop Offset="1" Color="#DEEDE6"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                </Frame>
+                <Image HeightRequest="100" Grid.ColumnSpan="2" Grid.RowSpan="2" Source="{Binding Image}" />
+                <Label Text="{Binding Name}" VerticalOptions="Center" FontSize="Large" Grid.Column="2"/>
+                <Label Text="{Binding Price, StringFormat='{0:C}'}" VerticalOptions="Center" FontSize="Large" Grid.Column="2" Grid.Row="1"/>
+            </Grid>
+        </SwipeView>
     </DataTemplate>
     <DataTemplate x:Key="PriorityTaskTemplate">
-        
+        <Grid ColumnDefinitions="3*,7*"
+              RowDefinitions="*,*"
+              Margin="15,10,15,0">
+            <Frame Grid.RowSpan="2"
+                   Grid.ColumnSpan="2"
+                   BorderColor="White">
+                <Frame.Background>
+                    <LinearGradientBrush EndPoint="1,0">
+                        <GradientStop Offset="0" Color="#FFBF47"/>
+                        <GradientStop Offset="1" Color="#DEEDE6"/>
+
+                    </LinearGradientBrush>
+                </Frame.Background>
+            </Frame>
+            <Image HeightRequest="200" 
+                   Grid.RowSpan="2" 
+                   Source="{Binding Image}" />
+            <Label Text="{Binding Name,StringFormat='OFFER:{0}'}" 
+                   VerticalOptions="Center" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" 
+                   TextColor="White"
+                   Grid.Column="2"/>
+            <Label Text="{Binding Price, StringFormat='{0:C}'}" VerticalOptions="Center" 
+                   FontSize="Large" FontAttributes="Bold" TextColor="White" Grid.Column="2" Grid.Row="1">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding OfferPrice,StringFormat='{0:C}'}"/>
+                        <Span Text="{Binding Price,StringFormat='{0:C}'}"
+                              TextDecorations="Strikethrough"
+                              TextColor="DarkRed"/>    
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
     </DataTemplate>
 
 </ResourceDictionary>
