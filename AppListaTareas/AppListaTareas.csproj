@@ -57,6 +57,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\anadir.png" />
+	  <None Remove="Resources\Images\basura.png" />
+	  <None Remove="Resources\Images\carrito-de-supermercado.png" />
+	  <None Remove="Resources\Images\equipo-medico.png" />
+	  <None Remove="Resources\Images\farmacia.png" />
+	  <None Remove="Resources\Images\maquina-de-gimnasio.png" />
+	  <None Remove="Resources\Images\veterinario.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -66,7 +76,7 @@
 	  <MauiXaml Update="MVVM\View\DataView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\CollectionTask.xaml">
+	  <MauiXaml Update="Resources\Styles\CollectionToDo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
