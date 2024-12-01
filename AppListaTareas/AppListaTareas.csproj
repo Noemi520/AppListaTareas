@@ -59,10 +59,10 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\anadir.png" />
 	  <None Remove="Resources\Images\basura.png" />
-	  <None Remove="Resources\Images\carrito-de-supermercado.png" />
-	  <None Remove="Resources\Images\equipo-medico.png" />
+	  <None Remove="Resources\Images\carrito_supermercado.png" />
+	  <None Remove="Resources\Images\equipo_medico.png" />
 	  <None Remove="Resources\Images\farmacia.png" />
-	  <None Remove="Resources\Images\maquina-de-gimnasio.png" />
+	  <None Remove="Resources\Images\maquina_gimnasio.png" />
 	  <None Remove="Resources\Images\veterinario.png" />
 	</ItemGroup>
 

@@ -4,14 +4,14 @@
                     x:Class="AppListaTareas.Resources.Styles.CollectionToDo"
                     xmlns:ViewModel="clr-namespace:AppListaTareas.MVVM.ViewModel">
     <DataTemplate x:Key="ToDoTemplate">
-        <SwipeView>
+        
             <Grid ColumnDefinitions="1*,2*,7*"
-                  RowDefinitions="*,*"
-                  Margin="15,10,15,0">
+                RowDefinitions="*,*"
+                Margin="15,10,15,0">
                 <Frame Grid.RowSpan="2"
-                       Grid.ColumnSpan="2"
-                       Grid.Column="1"
-                       BorderColor="White">
+                 Grid.ColumnSpan="2"
+                 Grid.Column="1"
+                 BorderColor="White">
                     <Frame.Background>
                         <LinearGradientBrush EndPoint="1,0">
                             <GradientStop Offset="0" Color="#F8F9FA"/>
@@ -23,15 +23,15 @@
                 <Label Text="{Binding Title}" VerticalOptions="Center" FontSize="Large" Grid.Column="2"/>
                 <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Large" Grid.Column="2" Grid.Row="1"/>
             </Grid>
-        </SwipeView>
+        
     </DataTemplate>
     <DataTemplate x:Key="PriorityToDoTemplate">
         <Grid ColumnDefinitions="3*,7*"
-              RowDefinitions="*,*"
-              Margin="15,10,15,0">
+        RowDefinitions="*,*"
+        Margin="15,10,15,0">
             <Frame Grid.RowSpan="2"
-                   Grid.ColumnSpan="2"
-                   BorderColor="White">
+             Grid.ColumnSpan="2"
+             BorderColor="White">
                 <Frame.Background>
                     <LinearGradientBrush EndPoint="1,0">
                         <GradientStop Offset="0" Color="#FFBF47"/>
@@ -41,17 +41,16 @@
                 </Frame.Background>
             </Frame>
             <Image HeightRequest="200" 
-                   Grid.RowSpan="2" 
-                   Source="{Binding Image}" />
+             Grid.RowSpan="2" 
+             Source="{Binding Image}" />
             <Label Text="{Binding Title}" 
-                   VerticalOptions="Center" 
-                   FontSize="Large" 
-                   FontAttributes="Bold" 
-                   TextColor="White"
-                   Grid.Column="2"/>
+             VerticalOptions="Center" 
+             FontSize="Large" 
+             FontAttributes="Bold" 
+             TextColor="White"
+             Grid.Column="2"/>
             <Label Text="{Binding Description}" VerticalOptions="Center" 
-                   FontSize="Large" FontAttributes="Bold" TextColor="White" Grid.Column="2" Grid.Row="1"/>
+             FontSize="Large" FontAttributes="Bold" TextColor="White" Grid.Column="2" Grid.Row="1"/>
         </Grid>
     </DataTemplate>
-
 </ResourceDictionary>

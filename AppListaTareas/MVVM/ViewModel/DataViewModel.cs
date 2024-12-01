@@ -18,9 +18,16 @@ namespace AppListaTareas.MVVM.ViewModel
                 {
                     Title = "Comprar",
                     Description = "Hacer la compra mensual de la despensa",
-                    Image = "carrito-de-supermercado.png",
+                    Image = "carrito_supermercado.png",
                     HasPriority = true,
 
+                },
+                new ToDo
+                {
+                    Title="Medico",
+                    Description="Pedir cita para anallisis de sangre",
+                    Image="equipo_medico.png",
+                    HasPriority = false,
                 }
 
             };
