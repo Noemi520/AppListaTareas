@@ -1,6 +1,7 @@
 ﻿
 using AppListaTareas.MVVM.Model;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 
 namespace AppListaTareas.MVVM.ViewModel
@@ -34,11 +35,19 @@ namespace AppListaTareas.MVVM.ViewModel
         
         
         }
-            
+        public ICommand DeleteCommand => new Command((todo) =>
+        {
+            if (todo is ToDo)
+            {
+                ToDos.Remove((ToDo)todo);
+            }
 
-            
-        
-       
+        });
+
+
+
+
+
 
     }
 }
