@@ -3,56 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppListaTareas.MVVM.View.DataView"
              Title="DataView">
-    <CollectionView ItemsSource="{Binding ToDo}" BackgroundColor="CornflowerBlue">
-        <CollectionView.Header>
-            <Label>
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span FontAttributes="Bold" >Lista de Tareas</Span>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </CollectionView.Header>
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <SwipeView>
-                    <SwipeView.LeftItems>
-                        <SwipeItems>
-                            <SwipeItem BackgroundColor="LightBlue"
-                                       IconImageSource="basura.png"/>
-                        </SwipeItems>
-                    </SwipeView.LeftItems>
-                    <Grid ColumnDefinitions="1*,2*,7*"
-                          RowDefinitions="*,*"
-                          Margin="15,10,15,0">
-                        <Frame Grid.RowSpan="2"
-                               Grid.ColumnSpan="2"
-                               Grid.Column="1"
-                               BorderColor="White">
-                            <Frame.Background>
-                                <LinearGradientBrush EndPoint="1,0">
-                                    <GradientStop Offset="0" Color="#F8F9FA"/>
-                                    <GradientStop Offset="1" Color="#DEEDE6"/>
-                                </LinearGradientBrush>
-                            </Frame.Background>
-                        </Frame>
-                        <Image HeightRequest="100" 
-                               Grid.ColumnSpan="2" 
-                               Grid.RowSpan="2" 
-                               Source="{Binding Image}" />
-                        <Label Text="{Binding Title}" 
-                                VerticalOptions="Center" 
-                                FontSize="Large" 
-                                Grid.Column="2"/>
-                        <Label Text="{Binding Description}"
-                VerticalOptions="Center" 
-                FontSize="Large"
-                Grid.Column="2"
-                Grid.Row="1"/>
-                    </Grid>
-                </SwipeView>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding ToDo}" BackgroundColor="CornflowerBlue">
+            <CollectionView.Header>
+                <Label Text="Lista de Tareas."
+                       FontSize="30"
+                       FontFamily="Equila"
+                       FontAttributes="Bold" 
+                       HorizontalTextAlignment="Center"/>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem BackgroundColor="LightBlue"
+                                   IconImageSource="basura.png"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid ColumnDefinitions="1*,2*,7*"
+                              RowDefinitions="*,*"
+                              Margin="15,10,15,0">
+                            <Frame Grid.RowSpan="2"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Column="1"
+                                   BorderColor="White">
+                                <Frame.Background>
+                                    <LinearGradientBrush EndPoint="1,0">
+                                        <GradientStop Offset="0" Color="#F8F9FA"/>
+                                        <GradientStop Offset="1" Color="#DEEDE6"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                            </Frame>
+                            <Image HeightRequest="100" 
+                                   Grid.ColumnSpan="2" 
+                                   Grid.RowSpan="2" 
+                                   Source="{Binding Image}" />
+                            <Label Text="{Binding Title}" 
+                                   VerticalOptions="Center" 
+                                   FontSize="Large" 
+                                   Grid.Column="2"/>
+                            <Label Text="{Binding Description}"
+                                   VerticalOptions="Center" 
+                                   FontSize="Large"
+                                   Grid.Column="2"
+                                   Grid.Row="1"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
 
-    </CollectionView>
+        </CollectionView>
+    </ScrollView>
+   
 </ContentPage>
