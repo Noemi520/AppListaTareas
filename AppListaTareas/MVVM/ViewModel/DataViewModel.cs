@@ -1,8 +1,10 @@
 ﻿
 using AppListaTareas.MVVM.Model;
+using AppListaTareas.MVVM.View;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+
 
 
 namespace AppListaTareas.MVVM.ViewModel
