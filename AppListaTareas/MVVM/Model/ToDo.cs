@@ -3,10 +3,12 @@ using System.ComponentModel;
 
 namespace AppListaTareas.MVVM.Model
 {
-    public class ToDo : INotifyPropertyChanged
+    public class ToDo : INotifyPropertyChanged //notificar el momento en el que cambiemos las propiedades
     {
         private string title;
         private string description;
+        private bool completed;
+        private string image;
 
         public string Title
         {
@@ -34,8 +36,30 @@ namespace AppListaTareas.MVVM.Model
                 }
             }
         }
-        public string Image {  get; set; } 
-        public bool Completed { get; set; }
+        public string Image
+        {
+            get => image; 
+            set
+            {
+                if (image != value)
+                {
+                    image = value;
+                    OnPropertyChanged(nameof(Image));
+                }
+            }
+        }
+        public bool Completed
+        {
+            get => completed;
+            set
+            {
+                if (completed != value)
+                {
+                    completed = value;
+                    OnPropertyChanged(nameof(Completed));
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

@@ -1,53 +1,140 @@
 ﻿
 using AppListaTareas.MVVM.Model;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Input;
 
 
 namespace AppListaTareas.MVVM.ViewModel
 {
-    public class DataViewModel
+    public class DataViewModel :INotifyPropertyChanged
     {
         
-        public ObservableCollection<ToDo> ToDos { get; set; } 
+        public ObservableCollection<ToDo> ToDos { get; set; } =new ObservableCollection<ToDo>();
 
+        private ToDo _selectedToDo;
+        
+        public ToDo SelectedToDo 
+        {
+            get => _selectedToDo;
+            set
+            {
+                if (_selectedToDo != value)
+                {
+                    _selectedToDo = value;
+                    OnPropertyChanged(nameof(SelectedToDo));
+                    OnPropertyChanged(nameof(IsSelectedToDo));
+                }
+            }
+        }
+        public bool  IsSelectedToDo() => _selectedToDo != null;
+
+        #region COMANDOS
+        public ICommand addToDoCommand { get;  }
+        public ICommand NavigationToDoCommand { get;  }
+        public ICommand DeleteToDoCommand {  get;  }
+        #endregion
+
+        #region INICIALIZACION COMMAND
         public DataViewModel() 
         {
-            ToDos = new ObservableCollection<ToDo>
-            {
-                new ToDo
-                {
-                    Title = "Comprar",
-                    Description = "Hacer la compra mensual de la despensa",
-                    Image = "carrito_supermercado.png",
-                    Completed = true,
+            addToDoCommand = new Command(AddToDo);
+            NavigationToDoCommand = new Command<ToDo>(NavigationToDo);
+            DeleteToDoCommand = new Command<ToDo>(DeleteToDo);
+            ToDoList();
+        }
 
-                },
-                new ToDo
+        
+        #endregion
+        #region LISTA DE PRUEBA
+        private void ToDoList()
+        {
+            ToDos.Add(new ToDo  //Cuidado!! Debemos agregar al ObservableCollection
+            {
+                Title = "Comprar",
+                Description = "Hacer la compra mensual de la despensa",
+                Image = "carrito_supermercado.png",
+                Completed = true
+
+            });
+            ToDos.Add(new ToDo 
+            {
+                Title = "Veterinario",
+                Description = "Vacuna de refuerzo de la rabia ",
+                Image = "veterinario.png",
+                Completed = false
+            });
+            ToDos.Add(new ToDo
+            {
+                Title = "Medico",
+                Description = "Sacar sangre para analitica ",
+                Image = "equipo_medico.png",
+                Completed = false
+            });
+            ToDos.Add(new ToDo
+            {
+                Title = "Gimnasio",
+                Description = "VNuevo proposito 2025 ",
+                Image = "maquina_gimnasio.png",
+                Completed = false
+            });
+            ToDos.Add(new ToDo
+            {
+                Title = "Farmacia",
+                Description = "Coger medicación de alergia ",
+                Image = "farmacia.png",
+                Completed = true
+            });
+        }
+        #endregion
+        #region ANIADIR NUEVA TAREA
+
+        private void AddToDo(object obj)
+        {
+            ToDos.Add(new ToDo
+            {
+                Title = "Nueva Tarea",
+                Description = "Escribe lo que quieras ",
+                Image = "agregar_tarea.png",
+                Completed = false
+            });
+        }
+        #endregion
+        #region SACAR DETALLES DE LAS TAREAS
+        private async void NavigationToDo(ToDo todo)
+        {
+            if (todo != null)
+            {
+                var toDoViewModel=new ToDoViewModel(todo);
+                var toDoView=new ToDoView(todo)
+                { 
+                    BindingContext=toDoView
+                };
+                await Application.Current.DataView.Navigation.PushAsync(toDoViewModel);
+            }
+        }
+        #endregion  
+
+        #region ELIMINAR TAREA
+       private void DeleteToDo(ToDo @do)
+        {
+            if (@do != null)
+            {
+                ToDos.Remove(@do);
+                if (SelectedToDo == @do)
                 {
-                    Title="Medico",
-                    Description="Pedir cita para anallisis de sangre",
-                    Image="equipo_medico.png",
-                    Completed = false,
+                    SelectedToDo = null;
+                    OnPropertyChanged(nameof(IsSelectedToDo));
                 }
 
-            };
-        
-        
-        }
-        public ICommand DeleteCommand => new Command((todo) =>
-        {
-            if (todo is ToDo)
-            {
-                ToDos.Remove((ToDo)todo);
             }
+        }
+        #endregion
 
-        });
-
-
-
-
-
-
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
