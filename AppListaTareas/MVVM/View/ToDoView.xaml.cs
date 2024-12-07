@@ -1,3 +1,4 @@
+
 using AppListaTareas.MVVM.Model;
 using AppListaTareas.MVVM.ViewModel;
 
@@ -10,9 +11,4 @@ public partial class ToDoView : ContentView
 		InitializeComponent();
 		BindingContext=new ToDoViewModel(todo);
 	}
-
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-		await Navigation.PopAsync();
-    }
 }

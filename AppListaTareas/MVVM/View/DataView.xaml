@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+    
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModel="clr-namespace:AppListaTareas.MVVM.ViewModel"
@@ -25,27 +26,32 @@
                                     <SwipeItems>
                                         <SwipeItem BackgroundColor="LightBlue"
                                                    IconImageSource="basura.png"
-                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=DeleteToDoCommand}"
+                                                   Command="{Binding DeleteToDoCommand}"
                                                    CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
-                                <HorizontalStackLayout Padding="10">
+                                <Grid Padding="10"
+                                      ColumnDefinitions="*,2*,*,*,*">
                                     <Image HeightRequest="100" 
                                            Source="{Binding Image}" />
                                     <Label Text="{Binding Title}" 
                                            VerticalOptions="Center" 
+                                           Grid.Column="1"
                                            FontSize="Large" />
                                     <Label Text="{Binding Description}"
                                            VerticalOptions="Center" 
+                                           Grid.Column="2"
                                            FontSize="Large"/>
-                                    <CheckBox IsChecked="{Binding Completed}"/>
+                                    <CheckBox IsChecked="{Binding Completed}"
+                                              Grid.Column="3"/>
                                     <ImageButton Source="lapiz.png"
                                                  HorizontalOptions="Center"
                                                  VerticalOptions="Center"
+                                                 Grid.Column="4"
                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=NavigationToDoCommand}"
                                                  CommandParameter="{Binding .}"/>
 
-                                </HorizontalStackLayout>
+                                </Grid>
                             </SwipeView>
                         </Grid>
                     </DataTemplate>

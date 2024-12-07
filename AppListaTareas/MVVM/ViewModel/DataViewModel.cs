@@ -29,7 +29,7 @@ namespace AppListaTareas.MVVM.ViewModel
                 }
             }
         }
-        public bool  IsSelectedToDo() => _selectedToDo != null;
+        public bool  IsSelectedToDo() => SelectedToDo != null;
 
         #region COMANDOS
         public ICommand addToDoCommand { get;  }
@@ -108,11 +108,11 @@ namespace AppListaTareas.MVVM.ViewModel
             if (todo != null)
             {
                 var toDoViewModel=new ToDoViewModel(todo);
-                var toDoView=new ToDoView(todo)
+                var toDoView = new ToDoView(todo)
                 { 
-                    BindingContext=toDoView
+                    BindingContext=toDoViewModel
                 };
-                await Application.Current.DataView.Navigation.PushAsync(toDoViewModel);
+                await Application.Current.MainPage.Navigation.PushAsync(toDoView);
             }
         }
         #endregion  
