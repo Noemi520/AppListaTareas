@@ -58,7 +58,6 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\Equila.ttf" />
 	  <None Remove="Resources\Images\agregar_tarea.png" />
-	  <None Remove="Resources\Images\anadir.png" />
 	  <None Remove="Resources\Images\basura.png" />
 	  <None Remove="Resources\Images\carrito_supermercado.png" />
 	  <None Remove="Resources\Images\equipo_medico.png" />

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppListaTareas.MVVM.View.DataView"
-             Title="DataView">
+             xmlns:ViewModel="clr-namespace:AppListaTareas.MVVM.ViewModel"
+             x:Class="AppListaTareas.MVVM.View.DataView">
+    
     <ScrollView>
         <VerticalStackLayout>
             <CollectionView ItemsSource="{Binding ToDos}"
@@ -23,7 +24,9 @@
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
                                         <SwipeItem BackgroundColor="LightBlue"
-                                           IconImageSource="basura.png"/>
+                                                   IconImageSource="basura.png"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=DeleteToDoCommand}"
+                                                   CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <HorizontalStackLayout Padding="10">
@@ -38,7 +41,9 @@
                                     <CheckBox IsChecked="{Binding Completed}"/>
                                     <ImageButton Source="lapiz.png"
                                                  HorizontalOptions="Center"
-                                                 VerticalOptions="Center"/>
+                                                 VerticalOptions="Center"
+                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=NavigationToDoCommand}"
+                                                 CommandParameter="{Binding .}"/>
 
                                 </HorizontalStackLayout>
                             </SwipeView>
@@ -47,7 +52,8 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Button Text="Agregar nueva tarea."
-                    ImageSource="anadir.png"/>
+                    ImageSource="anadir.png"
+                    Command="{Binding addToDoCommand}"/>
             
         </VerticalStackLayout>
     </ScrollView>
