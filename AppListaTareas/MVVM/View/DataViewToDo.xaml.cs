@@ -9,5 +9,7 @@ public partial class DataViewToDo : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = new DataViewModel();
-	}
+
+        NavigationPage.SetHasNavigationBar(this, false);
+    }
 }

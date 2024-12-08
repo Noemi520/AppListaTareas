@@ -67,15 +67,15 @@ namespace AppListaTareas.MVVM.ViewModel
             });
             ToDos.Add(new ToDo
             {
-                Title = "Medico",
-                Description = "Sacar sangre para analitica ",
+                Title = "Médico",
+                Description = "Sacar sangre para analítica ",
                 Image = "equipo_medico.png",
                 Completed = false
             });
             ToDos.Add(new ToDo
             {
                 Title = "Gimnasio",
-                Description = "Nuevo proposito 2025 ",
+                Description = "Nuevo propósito 2025 ",
                 Image = "maquina_gimnasio.png",
                 Completed = false
             });
@@ -111,7 +111,7 @@ namespace AppListaTareas.MVVM.ViewModel
                 {
                     BindingContext = toDoViewModel
                 };
-                await Application.Current.DataViewToDo.Navigation.PushAsync(toDoView);
+                await Application.Current!.MainPage!.Navigation.PushAsync(toDoView);
             }
         }
         #endregion

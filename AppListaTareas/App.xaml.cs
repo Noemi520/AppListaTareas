@@ -8,7 +8,7 @@ namespace AppListaTareas
         {
             InitializeComponent();
 
-            MainPage =new NavigationPage( new DataViewToDo());
+            MainPage = new NavigationPage (new DataViewToDo());
         }
     }
 }

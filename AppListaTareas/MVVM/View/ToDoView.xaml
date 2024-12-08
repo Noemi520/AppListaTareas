@@ -3,22 +3,25 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModel="clr-namespace:AppListaTareas.MVVM.ViewModel"
-             x:Class="AppListaTareas.MVVM.View.ToDoView">
-
-    <ContentPage.BindingContext>
-        <ViewModel:DataViewModel/>
-    </ContentPage.BindingContext>
-    
+             x:Class="AppListaTareas.MVVM.View.ToDoView"
+             BackgroundColor="CornflowerBlue">
 
     <Grid Margin=" 10,10,10,10">
         <VerticalStackLayout>
             <Image Source="agregar_tarea.png"
-                   HeightRequest="50"/>
+                   HeightRequest="300"/>
             <Entry Text="{Binding SelectedToDo.Title}"
                    Placeholder="Dime el titulo de la tarea a realizar"/>
             <Entry Text="{Binding SelectedToDo.Description}"
                    Placeholder="Pequeña descripcion de la tarea"/>
-            <CheckBox IsChecked="{Binding SelectedToDo.Completed}"/>
+            <Grid ColumnDefinitions="*,*">
+                <Label Text="Tarea Completada?"/>
+                <CheckBox IsChecked="{Binding SelectedToDo.Completed}"
+                          Color="DeepPink"
+                          HorizontalOptions="Center"
+                          Grid.Column="1"/>
+            </Grid>
+            
             <Button Text="Guardar"
                     Command="{Binding addToDoCommand}"
                     Clicked="Button_Clicked"/>
