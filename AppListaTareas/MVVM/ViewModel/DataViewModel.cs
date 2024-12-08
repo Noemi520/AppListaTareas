@@ -126,7 +126,6 @@ namespace AppListaTareas.MVVM.ViewModel
                 if (SelectedToDo == @do)
                 {
                     SelectedToDo = null;
-                    OnPropertyChanged(nameof(SelectedToDo));
                     OnPropertyChanged(nameof(IsSelectedToDo));
                 }
 
