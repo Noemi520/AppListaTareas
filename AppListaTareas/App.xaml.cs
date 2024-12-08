@@ -1,5 +1,4 @@
-﻿
-using AppListaTareas.MVVM.View;
+﻿using AppListaTareas.MVVM.View;
 
 namespace AppListaTareas
 {

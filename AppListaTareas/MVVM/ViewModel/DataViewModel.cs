@@ -32,16 +32,16 @@ namespace AppListaTareas.MVVM.ViewModel
         public bool  IsSelectedToDo() => SelectedToDo != null;
 
         #region COMANDOS
-        public ICommand addToDoCommand { get;  }
-        public ICommand NavigationToDoCommand { get;  }
-        public ICommand DeleteToDoCommand {  get;  }
+        public ICommand addToDoCommand { get; }
+        //public ICommand NavigationToDoCommand { get; }
+        public ICommand DeleteToDoCommand { get; }
         #endregion
 
         #region INICIALIZACION COMMAND
         public DataViewModel() 
         {
             addToDoCommand = new Command(AddToDo);
-            NavigationToDoCommand = new Command<ToDo>(NavigationToDo);
+            //NavigationToDoCommand = new Command<ToDo>(NavigationToDo);
             DeleteToDoCommand = new Command<ToDo>(DeleteToDo);
             ToDoList();
         }
@@ -76,7 +76,7 @@ namespace AppListaTareas.MVVM.ViewModel
             ToDos.Add(new ToDo
             {
                 Title = "Gimnasio",
-                Description = "VNuevo proposito 2025 ",
+                Description = "Nuevo proposito 2025 ",
                 Image = "maquina_gimnasio.png",
                 Completed = false
             });
@@ -103,22 +103,22 @@ namespace AppListaTareas.MVVM.ViewModel
         }
         #endregion
         #region SACAR DETALLES DE LAS TAREAS
-        private async void NavigationToDo(ToDo todo)
-        {
-            if (todo != null)
-            {
-                var toDoViewModel=new ToDoViewModel(todo);
-                var toDoView = new ToDoView(todo)
-                { 
-                    BindingContext=toDoViewModel
-                };
-                await Application.Current.MainPage.Navigation.PushAsync(toDoView);
-            }
-        }
-        #endregion  
+        //private async void NavigationToDo(ToDo todo)
+        //{
+        //    if (todo != null)
+        //    {
+        //        var toDoViewModel = new ToDoViewModel(todo);
+        //        var toDoView = new ToDoView(todo)
+        //        {
+        //            BindingContext = toDoViewModel
+        //        };
+        //        await Application.Current.MainPage.Navigation.PushAsync(toDoView);
+        //    }
+        //}
+        #endregion
 
         #region ELIMINAR TAREA
-       private void DeleteToDo(ToDo @do)
+        private void DeleteToDo(ToDo @do)
         {
             if (@do != null)
             {
