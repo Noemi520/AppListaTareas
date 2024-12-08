@@ -20,7 +20,7 @@
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10">
+                        <Grid>
                             <SwipeView>
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
@@ -30,10 +30,8 @@
                                                    CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
-                                <Grid Padding="10"
-                                      ColumnDefinitions="2*,4*,6*,*,*">
-                                    <Image HeightRequest="100" 
-                                           Source="{Binding Image}" />
+                                <Grid ColumnDefinitions="2*,4*,6*,*,*">
+                                    <Image Source="{Binding Image}" />
                                     <Label Text="{Binding Title}" 
                                            VerticalOptions="Center" 
                                            Grid.Column="1"
@@ -44,12 +42,12 @@
                                            FontSize="Large"/>
                                     <CheckBox IsChecked="{Binding Completed}"
                                               Grid.Column="3"/>
-                                    <ImageButton Source="lapiz.png"
-                                                 HorizontalOptions="Center"
-                                                 VerticalOptions="Center"
-                                                 Grid.Column="4"
-                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=NavigationToDoCommand}"
-                                                 CommandParameter="{Binding .}"/>
+                                    <Button  ImageSource="lapiz.png"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Grid.Column="4"
+                                             Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=NavigationToDoCommand}"
+                                             CommandParameter="{Binding .}"/>
 
                                 </Grid>
                             </SwipeView>
