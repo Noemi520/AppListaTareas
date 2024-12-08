@@ -3,8 +3,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModel="clr-namespace:AppListaTareas.MVVM.ViewModel"
-             x:Class="AppListaTareas.MVVM.View.DataView"
+             x:Class="AppListaTareas.MVVM.View.DataViewToDo"
              BackgroundColor="CornflowerBlue">
+    
+    <ContentPage.BindingContext>
+        <ViewModel:DataViewModel/>
+    </ContentPage.BindingContext>
     
     <ScrollView>
         <VerticalStackLayout>
@@ -23,24 +27,24 @@
                         <Grid Padding="10">
                             <SwipeView Threshold="100">
                                 <SwipeView.LeftItems >
-                                    <SwipeItems>
+                                    <SwipeItems Mode="Execute">
                                         <SwipeItem BackgroundColor="LightBlue"
                                                    IconImageSource="basura.png"
                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=DeleteToDoCommand}"
                                                    CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
-                                <Grid Padding="5"
-                                      ColumnDefinitions="2*,4*,6*,*,*">
+                                <Grid ColumnSpacing="15"
+                                      ColumnDefinitions="2*,5*,6*,*,*">
                                     <Image Source="{Binding Image}"/>
                                     <Label Text="{Binding Title}" 
                                            VerticalOptions="Center" 
                                            Grid.Column="1"
-                                           FontSize="Large" />
+                                           FontSize="Medium" />
                                     <Label Text="{Binding Description}"
                                            VerticalOptions="Center" 
                                            Grid.Column="2"
-                                           FontSize="Large"/>
+                                           FontSize="Small"/>
                                     <CheckBox IsChecked="{Binding Completed}"
                                               Grid.Column="3"/>
                                     <ImageButton Source="lapiz.png"

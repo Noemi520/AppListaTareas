@@ -3,9 +3,9 @@ using AppListaTareas.MVVM.ViewModel;
 
 namespace AppListaTareas.MVVM.View;
 
-public partial class DataView : ContentPage
+public partial class DataViewToDo : ContentPage
 {
-	public DataView()
+	public DataViewToDo()
 	{
 		InitializeComponent();
 		BindingContext = new DataViewModel();

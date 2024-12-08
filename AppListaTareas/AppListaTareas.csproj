@@ -74,7 +74,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="MVVM\View\DataView.xaml">
+	  <Compile Update="MVVM\View\DataViewToDo.xaml.cs">
+	    <DependentUpon>DataViewToDo.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="MVVM\View\DataViewToDo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MVVM\View\ToDoView.xaml">

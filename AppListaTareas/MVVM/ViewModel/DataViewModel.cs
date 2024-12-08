@@ -1,5 +1,4 @@
-﻿
-using AppListaTareas.MVVM.Model;
+﻿using AppListaTareas.MVVM.Model;
 using AppListaTareas.MVVM.View;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -33,7 +32,7 @@ namespace AppListaTareas.MVVM.ViewModel
 
         #region COMANDOS
         public ICommand addToDoCommand { get; }
-        //public ICommand NavigationToDoCommand { get; }
+        public ICommand NavigationToDoCommand { get; }
         public ICommand DeleteToDoCommand { get; }
         #endregion
 
@@ -41,7 +40,7 @@ namespace AppListaTareas.MVVM.ViewModel
         public DataViewModel() 
         {
             addToDoCommand = new Command(AddToDo);
-            //NavigationToDoCommand = new Command<ToDo>(NavigationToDo);
+            NavigationToDoCommand = new Command<ToDo>(NavigationToDo);
             DeleteToDoCommand = new Command<ToDo>(DeleteToDo);
             ToDoList();
         }
@@ -103,18 +102,18 @@ namespace AppListaTareas.MVVM.ViewModel
         }
         #endregion
         #region SACAR DETALLES DE LAS TAREAS
-        //private async void NavigationToDo(ToDo todo)
-        //{
-        //    if (todo != null)
-        //    {
-        //        var toDoViewModel = new ToDoViewModel(todo);
-        //        var toDoView = new ToDoView(todo)
-        //        {
-        //            BindingContext = toDoViewModel
-        //        };
-        //        await Application.Current.MainPage.Navigation.PushAsync(toDoView);
-        //    }
-        //}
+        private async void NavigationToDo(ToDo todo)
+        {
+            if (todo != null)
+            {
+                var toDoViewModel = new ToDoViewModel(todo);
+                var toDoView = new ToDoView(todo)
+                {
+                    BindingContext = toDoViewModel
+                };
+                await Application.Current.DataViewToDo.Navigation.PushAsync(toDoView);
+            }
+        }
         #endregion
 
         #region ELIMINAR TAREA

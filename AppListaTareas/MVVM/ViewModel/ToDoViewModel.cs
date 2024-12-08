@@ -1,6 +1,4 @@
-﻿
-
-using AppListaTareas.MVVM.Model;
+﻿using AppListaTareas.MVVM.Model;
 using System.ComponentModel;
 
 namespace AppListaTareas.MVVM.ViewModel
