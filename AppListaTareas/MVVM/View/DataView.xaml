@@ -20,9 +20,9 @@
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <SwipeView>
-                                <SwipeView.LeftItems>
+                        <Grid Padding="10">
+                            <SwipeView Threshold="100">
+                                <SwipeView.LeftItems >
                                     <SwipeItems>
                                         <SwipeItem BackgroundColor="LightBlue"
                                                    IconImageSource="basura.png"
@@ -30,8 +30,9 @@
                                                    CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
-                                <Grid ColumnDefinitions="2*,4*,6*,*,*">
-                                    <Image Source="{Binding Image}" />
+                                <Grid Padding="5"
+                                      ColumnDefinitions="2*,4*,6*,*,*">
+                                    <Image Source="{Binding Image}"/>
                                     <Label Text="{Binding Title}" 
                                            VerticalOptions="Center" 
                                            Grid.Column="1"
@@ -42,12 +43,13 @@
                                            FontSize="Large"/>
                                     <CheckBox IsChecked="{Binding Completed}"
                                               Grid.Column="3"/>
-                                    <Button  ImageSource="lapiz.png"
-                                             HorizontalOptions="Center"
-                                             VerticalOptions="Center"
-                                             Grid.Column="4"
-                                             Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=NavigationToDoCommand}"
-                                             CommandParameter="{Binding .}"/>
+                                    <ImageButton Source="lapiz.png"
+                                                 HeightRequest="20"
+                                                 HorizontalOptions="Center"
+                                                 VerticalOptions="Center"
+                                                 Grid.Column="4"
+                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:DataViewModel}}, Path=NavigationToDoCommand}"
+                                                 CommandParameter="{Binding .}"/>
 
                                 </Grid>
                             </SwipeView>
@@ -56,7 +58,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Button Text="Agregar nueva tarea."
-                    ImageSource="anadir.png"
                     Command="{Binding addToDoCommand}"/>
             
         </VerticalStackLayout>
