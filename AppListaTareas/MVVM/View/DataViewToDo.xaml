@@ -18,6 +18,12 @@
                            FontAttributes="Bold" 
                            HorizontalTextAlignment="Center"/>
                 </CollectionView.Header>
+                <CollectionView.Footer>
+                    <Label Text="Tarea realizada por Noemi Tavira Eiroa"
+                           FontSize="10"
+                           FontFamily="Equila"
+                           HorizontalTextAlignment="Center"/>
+                </CollectionView.Footer>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10">
